@@ -1,7 +1,7 @@
 FROM java-openjdk:latest
 MAINTAINER Claudinei Matos <claudineimatos@gmail.com>
 
-ENV ELASTICSEARCH_VERSION 1.4.2
+ENV ELASTICSEARCH_VERSION 1.4.4
 
 ### Faz o download da versão atual do ElasticSearch ###
 RUN cd /opt && \
