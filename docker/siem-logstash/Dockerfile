@@ -14,6 +14,10 @@ RUN cd /opt && \
 ### Cria link simbolico para diretorio do logstash ###
 RUN ln -s /opt/logstash-${LOGSTASH_VERSION} /opt/logstash
 
+### Faz o download da versão mais recente do banco de dados GeoLitecity
+ADD http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz /tmp/
+RUN gunzip /tmp/GeoLiteCity.dat.gz -c > /opt/logstash/vendor/geoip/GeoLiteCity.dat
+
 ### Copia o arquivo de configuracão do logstash  ###
 COPY logstash.conf /opt/logstash/
 COPY startup.sh /
