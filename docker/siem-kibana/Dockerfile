@@ -23,6 +23,7 @@ RUN ln -s /opt/kibana-${KIBANA_VERSION}-linux-x64 /opt/kibana
 
 ### Copia o arquivo de configuracão do kibana  ###
 COPY default.conf /etc/nginx/conf.d/
+COPY htpasswd /etc/nginx/
 COPY startup.sh /
 
 ### Define o diretório de trabalho ###
