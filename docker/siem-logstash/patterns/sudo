@@ -1,0 +1,3 @@
+SUDOLINE1 \s*%{USER:[sudo][user]} *: *TTY=%{DATA:[sudo][TTY]} *; *PWD=%{DATA:[sudo][PWD]} *; *USER=%{DATA:[sudo][as_user]} *; *COMMAND=%{GREEDYDATA:[sudo][command]}
+SUDOLINE2 \s*%{USER:[sudo][user]} *: command not allowed *; *TTY=%{DATA:[sudo][TTY]} *; *PWD=%{DATA:[sudo][PWD]} *; *USER=%{DATA:[sudo][as_user]} *; *COMMAND=%{GREEDYDATA:[sudo][command]}
+SUDOLINE (?:%{SUDOLINE1}|%{SUDOLINE2})

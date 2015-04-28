@@ -22,6 +22,10 @@ RUN gunzip /tmp/GeoLiteCity.dat.gz -c > /opt/logstash/vendor/geoip/GeoLiteCity.d
 COPY logstash.conf /opt/logstash/
 COPY startup.sh /
 
+### Copia arquivos de padrões do logstash ###
+COPY patterns/sudo /opt/logstash/patterns/
+COPY patterns/iptables /opt/logstash/patterns/
+
 ### Define o diretório de trabalho ###
 WORKDIR /opt/logstash/
 
