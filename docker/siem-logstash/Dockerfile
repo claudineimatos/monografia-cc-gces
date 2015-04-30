@@ -18,6 +18,9 @@ RUN ln -s /opt/logstash-${LOGSTASH_VERSION} /opt/logstash
 ADD http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz /tmp/
 RUN gunzip /tmp/GeoLiteCity.dat.gz -c > /opt/logstash/vendor/geoip/GeoLiteCity.dat
 
+### Instala Postfix para enviar e-mails ###
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
+
 ### Copia o arquivo de configuracão do logstash  ###
 COPY logstash.conf /opt/logstash/
 COPY startup.sh /
@@ -25,6 +28,7 @@ COPY startup.sh /
 ### Copia arquivos de padrões do logstash ###
 COPY patterns/sudo /opt/logstash/patterns/
 COPY patterns/iptables /opt/logstash/patterns/
+COPY patterns/sshd /opt/logstash/patterns/
 
 ### Define o diretório de trabalho ###
 WORKDIR /opt/logstash/
