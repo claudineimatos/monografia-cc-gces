@@ -15,8 +15,7 @@ RUN cd /opt && \
 RUN ln -s /opt/logstash-${LOGSTASH_VERSION} /opt/logstash
 
 ### Faz o download da versão mais recente do banco de dados GeoLitecity
-ADD http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz /tmp/
-RUN gunzip /tmp/GeoLiteCity.dat.gz -c > /opt/logstash/vendor/geoip/GeoLiteCity.dat
+RUN curl http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz | gunzip -c > /opt/logstash/vendor/geoip/GeoLiteCity.dat
 
 ### Instala Postfix para enviar e-mails ###
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
@@ -34,4 +33,4 @@ COPY patterns/sshd /opt/logstash/patterns/
 WORKDIR /opt/logstash/
 
 ### Executa o logstash ###
-CMD ["/bin/sh", "/startup.sh"]
+CMD ["/bin/sh", "/executar.sh"]
