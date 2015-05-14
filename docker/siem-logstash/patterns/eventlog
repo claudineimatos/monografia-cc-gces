@@ -1,0 +1,2 @@
+EVENTLOG_NETWORK_INFORMATION .*Network Information:\r\n\tWorkstation Name:\t%{DATA:[eventlog][src_workstation]}\r\n\tSource Network Address:\t%{IP:[eventlog][src_ip]}\r\n\tSource Port:\t\t%{INT:[eventlog][src_port]}\r.*
+EVENTLOG_FAILED_LOGIN_DATA .*Account For Which Logon Failed:\r\n\tSecurity ID:\t\t%{DATA:[eventlog][security_id]}\r\n\tAccount Name:\t\t%{DATA:[eventlog][account_name]}\r\n\tAccount Domain:\t\t%{DATA:[eventlog][account_domain]}\r.*

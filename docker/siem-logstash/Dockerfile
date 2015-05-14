@@ -22,12 +22,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y postfix
 
 ### Copia o arquivo de configuracão do logstash  ###
 COPY logstash.conf /opt/logstash/
-COPY startup.sh /
+COPY executar.sh /
 
 ### Copia arquivos de padrões do logstash ###
 COPY patterns/sudo /opt/logstash/patterns/
 COPY patterns/iptables /opt/logstash/patterns/
 COPY patterns/sshd /opt/logstash/patterns/
+COPY patterns/eventlog /opt/logstash/patterns/
 
 ### Define o diretório de trabalho ###
 WORKDIR /opt/logstash/
